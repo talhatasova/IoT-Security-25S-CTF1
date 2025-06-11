@@ -1,6 +1,6 @@
 import re
 import socket
-from Crypto.Util.number import *
+from Crypto.Util.number import getRandomNBitInteger, inverse, long_to_bytes
 
 HOST = '10.157.150.7'
 PORT = 50004
@@ -22,7 +22,7 @@ def get_menu():
     return menu.decode()
 
 public_key = get_menu()
-print(public_key)
+#print(public_key)
 e = int(re.search(r"e\s*=\s*0x([0-9a-fA-F]+)", public_key).group(1), 16)
 n = int(re.search(r"n\s*=\s*0x([0-9a-fA-F]+)", public_key).group(1), 16)
 
@@ -41,7 +41,8 @@ print(response)
 
 # === Helper: Get signature from chat ===
 def get_signature(msg_bytes):
-    print(get_menu())
+    #print(get_menu())
+    get_menu()
     s.sendall(b'2\n')
     response = s.recv(4096).decode()
     print(response)

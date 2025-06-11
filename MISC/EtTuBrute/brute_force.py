@@ -47,8 +47,6 @@ def main():
         print("Challenge not found.")
         return
 
-    # Example usage of the Caesar cipher function
-    # Try different offsets (e.g., 3 for Caesar's traditional shift)
     for offset in range(26):
         shifted = caesar_cipher(challenge_b64, offset)
         print(f"Offset {offset}: {shifted}")

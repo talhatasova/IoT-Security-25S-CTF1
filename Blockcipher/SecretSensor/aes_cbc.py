@@ -7,7 +7,6 @@ def unpad(data):
         raise ValueError("Invalid padding.")
     return data[:-pad_len].decode()
 
-# --- AES-CBC Decrypt Function ---
 def aes_cbc_decrypt(ciphertext, key, iv):
     aes = AES.new(key, AES.MODE_CBC, iv)
     plaintext = aes.decrypt(ciphertext)
@@ -18,8 +17,8 @@ def aes_ecb_decrypt_block(block, key):
     return aes.decrypt(block)
 
 
-temp_enc_file = "/home/talhatasova/iotsec_ctf1/Blockcipher/SecretSensor/temp_readings.enc"
-secret_enc_file = "/home/talhatasova/iotsec_ctf1/Blockcipher/SecretSensor/secret_readings.enc"
+temp_enc_file = "/home/talhatasova/IoT-Security-25S-CTF1/Blockcipher/SecretSensor/temp_readings.enc"
+secret_enc_file = "/home/talhatasova/IoT-Security-25S-CTF1/Blockcipher/SecretSensor/secret_readings.enc"
 key_hex = "20e2a92c496b2fceb5d6bda6e2141351"
 key = bytes.fromhex(key_hex)
 

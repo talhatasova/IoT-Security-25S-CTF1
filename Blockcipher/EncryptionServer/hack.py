@@ -25,6 +25,7 @@ print(initmsg.decode())
 
 ref = "000102030405060708090A0B0C0D0E"  # Initial reference message
 secret = "6543625F4D4F44655F69735F4E4F545F7345635572"
+secret = ""
 
 ref_response = send_and_recv(s, (ref+secret).encode())[:32]
 
@@ -48,8 +49,7 @@ print(f"Secret found: {bytes.fromhex(secret).decode()}")
 
 000102030405060708090A0B0C0D0EXX XXXXXXXXXXXXPPPPPPPPPPPPPPPPPPPP
 c731621241cdd6e1d79f133d7aaeb02d adac73512af12f1ad925c2fbb5a5f356 a37c7d5f1dfd96972ca8277c5e6b6280 """
-""" eCb_MODe_is_NOT_ """
-""" sEcUre"""
+""" eCb_MODe_is_NOT_sEcUre """
 
 # adac73512af12f1ad925c2fbb5a5f356
 

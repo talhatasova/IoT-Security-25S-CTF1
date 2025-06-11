@@ -25,7 +25,7 @@ print(response)
 challenge_line = [line for line in response.splitlines() if line.startswith("Challenge")][0]
 challenge_b64 = challenge_line.split(": ")[1]
 decoded = base64.b64decode(challenge_b64).decode()
-print("[+] Decoded Challenge:", decoded)
+print("Decoded Challenge:", decoded)
 
 # Send 2 for solution
 s.sendall(b'2\n')

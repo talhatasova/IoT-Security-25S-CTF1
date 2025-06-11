@@ -38,7 +38,7 @@ def frequency_analysis(text):
 
 
 # Encrypted text (paste your full ciphertext here)
-with open('letter.txt', 'r') as file:
+with open('/home/talhatasova/IoT-Security-25S-CTF1/MISC/WeirdLetter/letter.txt', 'r') as file:
     ciphertext = file.read().strip()
 
     # Decrypt
@@ -58,5 +58,8 @@ frequency = frequency_analysis(ciphertext)
 print("Frequency Analysis:")
 for letter, count in frequency.most_common():
     print(f"{letter}: {count}")
+
 # Output decrypted text
-print(plaintext[:100])
+if "iotsec" in plaintext:
+    index = plaintext.index("iotsec")
+    print(plaintext[index:index+100])

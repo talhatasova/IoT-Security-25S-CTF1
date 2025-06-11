@@ -13,21 +13,15 @@ with socket.create_connection((HOST, PORT)) as s:
             data += s.recv(1)
         return data
 
-
-    print(s.recv(1024).decode())
-
-
-    # Step 1: Send known  plaintext
-
-    known_plain = b"A" * 32  # Length matches SHA-256 output
-
+    known_plain = b"A" * 32
     s.sendall(b"2\n")
-    recv_until(b"challenge: ")
+    init_msg = recv_until(b"challenge: ")
+    print(init_msg.decode())
     s.sendall(known_plain + b"\n")
 
     line = s.recv(1024).decode()
+    print(line)
     encrypted_known = bytes.fromhex(line.strip().split(": ")[1])
-    print("[+] Encrypted known:", encrypted_known.hex())
 
     # Recover key
     key = xor_bytes(known_plain, encrypted_known)
@@ -38,14 +32,9 @@ with socket.create_connection((HOST, PORT)) as s:
 
     s.sendall(b"1\n")
 
-
-    while True:
-        line = s.recv(1024).decode()
-        if "encrypted_flag: " in line:
-            encrypted_flag_hex = line.strip().split(": ")[1]
-            break
-        else:
-            print("Skipping line:", line.strip())
+    line = recv_until(b"encrypted_flag: ")
+    line += s.recv(4096)
+    encrypted_flag_hex = line.decode().strip().split(": ")[-1]
 
     encrypted_flag = bytes.fromhex(encrypted_flag_hex)
     print("[+] Encrypted flag:", encrypted_flag.hex())

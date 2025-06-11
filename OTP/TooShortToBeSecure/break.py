@@ -5,7 +5,6 @@ def main():
 
     for key in range(256):
         try:
-
             plaintext = ''.join(chr(b ^ key) for b in cipher_bytes)
             print(f"[Key={key:3} | Char='{chr(key)}'] -> {plaintext}")
         except UnicodeDecodeError:
