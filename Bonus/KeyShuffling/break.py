@@ -7,12 +7,12 @@ def try_decrypt(enc_bytes):
     if (flag[0] ^ flag[-1]) == enc_bytes[-1]:
         try:
             recovered = ''.join(chr(c) for c in flag)
-            print(recovered)
+            return recovered
         except:
             pass
 
 # Read encrypted file
-with open('iotsec_ctf1/Bonus/KeyShuffling/flagbonus.enc', 'rb') as f:
+with open('/home/talhatasova/IoT-Security-25S-CTF1/Bonus/KeyShuffling/flagbonus.enc', 'rb') as f:
     enc_bytes = list(f.read())
 
 flag = try_decrypt(enc_bytes)

@@ -72,14 +72,14 @@ while True:
         sig2 = get_signature(m2_bytes)
         if sig2 is None:
             continue
-        print("[+] Found m1, m2!")
+        print("m1 - m2 pair has been found.")
         break
     except:
         continue
 
 # === Build the final signature ===
 final_sig = (sig1 * sig2) % n
-print("[+] Final Signature:", hex(final_sig))
+print(f"Signature of the flag: {hex(final_sig)}")
 
 # === Submit forged signature in login ===
 response = s.recv(4096).decode()
